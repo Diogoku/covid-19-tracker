@@ -1,0 +1,33 @@
+/* COUNTRIES TABLE PAPER */
+
+.tableCountries > .MuiPaper-root {
+  padding: 10px;
+}
+
+/* COUNTRIES TABLE CONTAINER */
+
+.MuiTableContainer-root {
+  max-height: 250px;
+}
+
+.MuiTableContainer-root::-webkit-scrollbar {
+  width: 10px;
+}
+
+.MuiTableContainer-root::-webkit-scrollbar-track {
+  border: 1px solid rgb(245, 245, 245);
+}
+
+.MuiTableContainer-root::-webkit-scrollbar-thumb {
+  background-color: rgb(221, 221, 221);
+}
+
+/* COUNTRIES TABLE */
+
+.MuiTable-root {
+  min-width: 10px;
+}
+
+.MuiTable-root .MuiTableRow-root:nth-child(odd) {
+  background-color: #eeeded;
+}

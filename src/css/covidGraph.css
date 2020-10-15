@@ -1,0 +1,9 @@
+/* COVID GRAHP CHART */
+
+.covidGraph {
+  flex: 0.5;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
+}

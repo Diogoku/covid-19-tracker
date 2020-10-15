@@ -1,56 +1,84 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React, { useEffect } from "react";
+
+// REACT-REDUX
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setCurrentCountryInfo,
+  selectCurrentCountryInfo,
+} from "./features/countries/countriesSlice";
+
+// AXIOS
+import axios from "./axios";
+
+// COMPONENTS
+import Header from "./components/Header";
+import InfoBox from "./components/InfoBox";
+import TableCountries from "./components/TableCountries";
+import CovidMap from "./components/CovidMap";
+import CovidGraph from "./components/CovidGraph";
+
+// CSS
+import "./css/App.css";
 
 function App() {
+  const dispatch = useDispatch();
+  const currentCountryInfo = useSelector(selectCurrentCountryInfo);
+
+  useEffect(() => {
+    const fetchDefaultCountryInfo = async () => {
+      await axios
+        .get("/all")
+        .then(({ data }) =>
+          dispatch(
+            setCurrentCountryInfo({
+              country: "Worldwide",
+              code: "Worldwide",
+              cases: data.cases,
+              todayCases: data.todayCases,
+              deaths: data.deaths,
+              todayDeaths: data.todayDeaths,
+              recovered: data.recovered,
+              todayRecovered: data.todayRecovered,
+              tests: data.tests,
+            })
+          )
+        )
+        .catch((err) => console.log(err));
+    };
+
+    fetchDefaultCountryInfo();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+      <div className="app__leftSide">
+        <Header />
+        <div className="app__infoBoxes">
+          <InfoBox
+            title={"Corona Virus Cases"}
+            cases={currentCountryInfo.todayCases}
+            total={currentCountryInfo.cases}
+            type={"cases"}
+          />
+          <InfoBox
+            title={"Recovered"}
+            cases={currentCountryInfo.todayRecovered}
+            total={currentCountryInfo.recovered}
+            type={"recovered"}
+          />
+          <InfoBox
+            title={"Deaths"}
+            cases={currentCountryInfo.todayDeaths}
+            total={currentCountryInfo.deaths}
+            type={"deaths"}
+          />
+        </div>
+        <CovidMap />
+        <CovidGraph />
+      </div>
+      <div className="app__rightSide">
+        <TableCountries />
+      </div>
     </div>
   );
 }

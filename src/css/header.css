@@ -1,0 +1,13 @@
+/* HEADER */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h2 {
+  font-size: 26px;
+  text-transform: uppercase;
+  color: #d93a40;
+}

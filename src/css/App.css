@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* APP */
+
+.App {
+  padding: 10px 20px;
+  display: flex;
+  gap: 20px;
+  height: 200vh;
+}
+
+/* APP LEFT SIDE */
+
+.app__leftSide {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  flex: 0.8;
+}
+
+.app__infoBoxes {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* APP RIGHT SIDE */
+
+.app__rightSide {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  flex: 0.2;
+}
+
+/* CASES TYPE COLOR */
+
+.cases {
+  background-color: #ff0000;
+}
+
+.cases__text {
+  color: #ff0000;
+}
+
+.recovered {
+  background-color: #49fc31;
+}
+
+.recovered__text {
+  color: #49fc31;
+}
+
+.deaths {
+  background-color: #910000;
+}
+
+.deaths__text {
+  color: #910000;
+}

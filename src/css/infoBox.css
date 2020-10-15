@@ -1,0 +1,11 @@
+/* INFO BOX */
+
+.MuiCard-root {
+  flex: 0.3;
+}
+
+/* INFO BOX SELECTED */
+
+.infoBox__selected {
+  height: 10px;
+}
